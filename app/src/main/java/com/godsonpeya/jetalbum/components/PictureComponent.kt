@@ -13,10 +13,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PictureComponent(@DrawableRes image: Int, onPictureClicked: () -> Unit) {
+fun PictureComponent(@DrawableRes image: Int, index: Int, onPictureClicked: (index: Int) -> Unit) {
     Box(modifier = Modifier
         .padding(5.dp)
-        .clickable { onPictureClicked.invoke() },
+        .clickable {
+            onPictureClicked.invoke(index)
+        },
         contentAlignment = Alignment.Center) {
         Image(painter = painterResource(id = image),
             contentDescription = "image fleur",

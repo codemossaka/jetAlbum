@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.godsonpeya.jetalbum.R
 import com.godsonpeya.jetalbum.components.PictureComponent
-import com.godsonpeya.jetalbum.data.persons
+import com.godsonpeya.jetalbum.data.fleurs
 import com.godsonpeya.jetalbum.navigation.AppScreen
 
 @Composable
@@ -61,9 +61,9 @@ fun HomeScreen(navController: NavController) {
                             style = MaterialTheme.typography.h5,
                             fontWeight = FontWeight.Bold)
                     }
-                    itemsIndexed(persons) { index, person  ->
-                        PictureComponent(person) {
-                            navController.navigate(AppScreen.DetailScreen.name + "/$index")
+                    itemsIndexed(fleurs) { index, person ->
+                        PictureComponent(person, index = index) { id->
+                            navController.navigate(AppScreen.DetailScreen.name + "/"+ id)
                         }
                     }
 

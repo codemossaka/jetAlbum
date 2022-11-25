@@ -1,6 +1,10 @@
 package com.godsonpeya.jetalbum.navigation
 
+import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -15,8 +19,8 @@ fun MyAlbumNavigation(navHostController: NavHostController) {
             HomeScreen(navController = navHostController)
         }
         composable(route = AppScreen.DetailScreen.name + "/{id}") { entry ->
-            val id = entry.arguments?.getInt("id")
-            DetailScreen(navController = navHostController, id = id!!)
+            val id = entry.arguments?.getString("id")!!.toInt()
+            DetailScreen(navController = navHostController, id = id)
         }
 
     }

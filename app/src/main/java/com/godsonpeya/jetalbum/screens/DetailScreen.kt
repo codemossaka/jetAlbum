@@ -10,42 +10,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.godsonpeya.jetalbum.R
-import com.godsonpeya.jetalbum.data.persons
-import com.godsonpeya.jetalbum.ui.theme.JetAlbumTheme
+import com.godsonpeya.jetalbum.data.fleurs
 
 
 @Composable
 fun DetailScreen(navController: NavController, id: Int) {
 
-    val imageId by remember{
-        mutableStateOf(persons[id])
+    val imageId by remember {
+        mutableStateOf(fleurs[id])
     }
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text(text = "My Album") }, navigationIcon = {
-                IconButton(onClick = {
-                    navController.popBackStack()
-                }) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "BackMenu")
-                }
-            })
-        }
+    Scaffold(topBar = {
+        TopAppBar(title = { Text(text = "My Album") }, navigationIcon = {
+            IconButton(onClick = {
+                navController.popBackStack()
+            }) {
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "BackMenu")
+            }
+        })
+    }
 
     ) { innet ->
         Surface(modifier = Modifier
             .fillMaxSize()
             .padding(innet)) {
             Column {
-                Box(contentAlignment = Alignment.Center, modifier = Modifier
-                    .weight(.3f)
-                    .fillMaxWidth()) {
+                Box(contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(.3f)
+                        .fillMaxWidth()) {
                     Image(painter = painterResource(id = imageId),
-                        contentDescription = "une fleur", modifier = Modifier.size(300.dp))
+                        contentDescription = "une fleur",
+                        modifier = Modifier.size(300.dp))
                 }
 
 
@@ -54,7 +52,8 @@ fun DetailScreen(navController: NavController, id: Int) {
 
                 Card(modifier = Modifier
                     .weight(.7f)
-                    .padding(horizontal = 40.dp), elevation = 1.dp) {
+                    .padding(horizontal = 40.dp),
+                    elevation = 1.dp) {
                     Column(modifier = Modifier.padding(10.dp)) {
 
                         Text(text = "Heading",
